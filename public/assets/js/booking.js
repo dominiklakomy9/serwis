@@ -67,6 +67,7 @@
       btn.className = 'cal-cell';
       btn.textContent = day;
       btn.setAttribute('data-date', key);
+      btn.setAttribute('data-testid', 'day-' + key);
 
       var isPast = cellDate < today;
       var isFree = !!availableDates[key];

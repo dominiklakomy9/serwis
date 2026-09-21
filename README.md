@@ -62,6 +62,7 @@ Uzupełnij w `config/config.php`:
 - dane bazy (`db.*`),
 - dane kontaktowe (`contact.*`) — telefon, e-mail, obszar działania,
 - `app.base_url` (adres domeny) oraz `app.force_https = true` na produkcji,
+- `app.base_path` — pozostaw pusty `''`, gdy `DocumentRoot` wskazuje na `public/`. Jeśli uruchamiasz aplikację w **podkatalogu** (np. XAMPP pod `http://localhost/dlpogotowie/public`), ustaw `'/dlpogotowie/public'` — wtedy wszystkie linki, zasoby (CSS/JS) i wywołania API otrzymają poprawny prefiks,
 - dane SMTP (`mail.*`) i ustaw `mail.enabled = true`, aby wysyłać e-maile.
 
 ### 3.4. Konfiguracja serwera WWW

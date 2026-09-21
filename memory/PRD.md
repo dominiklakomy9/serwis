@@ -41,6 +41,11 @@ podwójna rezerwacja odrzucona, status ok, zły token odrzucony, CSRF odrzucony,
 pustego formularza, brute-force lock po 5 próbach, brak dostępu do panelu bez logowania.
 Wszystkie pliki PHP: `php -l` bez błędów.
 
+## Poprawki
+- 2026-06: Naprawiono brak styli przy uruchomieniu w podkatalogu (XAMPP `/dlpogotowie/public`).
+  Dodano `config app.base_path` + helper `u()` + `<body data-base>`; wszystkie linki, CSS/JS
+  i wywołania fetch prefiksowane. Zweryfikowane testing_agent (100% frontend, iteration_1.json).
+
 ## Backlog / przyszłość (P1/P2)
 - Pełny moduł protokołu przyjęcia (formularz, zdjęcia, wydruk PDF) na gotowej strukturze bazy.
 - Zmiana/anulowanie terminu przez klienta (self-service) zamiast kontaktu.
