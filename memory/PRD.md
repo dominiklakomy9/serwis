@@ -46,6 +46,15 @@ Wszystkie pliki PHP: `php -l` bez błędów.
   Dodano `config app.base_path` + helper `u()` + `<body data-base>`; wszystkie linki, CSS/JS
   i wywołania fetch prefiksowane. Zweryfikowane testing_agent (100% frontend, iteration_1.json).
 
+## Poprawki
+- 2026-06: Naprawiono brak styli przy uruchomieniu w podkatalogu (XAMPP `/dlpogotowie/public`).
+  Dodano `config app.base_path` + helper `u()` + `<body data-base>`; wszystkie linki, CSS/JS
+  i wywołania fetch prefiksowane. Zweryfikowane testing_agent (100% frontend, iteration_1.json).
+- 2026-06: Naprawiono błąd `open_basedir` na hostingu współdzielonym z wymuszonym `public_html`
+  (smallhost.pl). Pliki wejściowe używają lokatora ścieżki `app/bootstrap.php` (./app, ../app,
+  ../../app) → działa w układzie spłaszczonym (wszystko w public_html) i klasycznym (public/ obok app/).
+  Dodano `.htaccess` (deny) do app/, bin/, database/. Zweryfikowane testing_agent (100%, iteration_2.json).
+
 ## Backlog / przyszłość (P1/P2)
 - Pełny moduł protokołu przyjęcia (formularz, zdjęcia, wydruk PDF) na gotowej strukturze bazy.
 - Zmiana/anulowanie terminu przez klienta (self-service) zamiast kontaktu.
