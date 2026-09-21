@@ -1,0 +1,11 @@
+# Twarda blokada dostępu do katalogu konfiguracji przez HTTP.
+# Działa dla Apache 2.2 i 2.4. Docelowo katalog /config powinien i tak
+# znajdować się POZA DocumentRoot — to jest zabezpieczenie dodatkowe.
+
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

@@ -1,0 +1,35 @@
+# =====================================================================
+#  Konfiguracja Apache dla katalogu publicznego (DocumentRoot = public/)
+# =====================================================================
+
+# Nie pokazuj listingu katalogów.
+Options -Indexes
+
+# Domyślny dokument.
+DirectoryIndex index.php
+
+<IfModule mod_headers.c>
+    # Dodatkowe nagłówki bezpieczeństwa (aplikacja też je wysyła w PHP).
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set X-Frame-Options "DENY"
+    Header always unset X-Powered-By
+</IfModule>
+
+# Zablokuj dostęp do plików wrażliwych, gdyby trafiły do katalogu public.
+<FilesMatch "(^\.|composer\.(json|lock)|\.(env|ini|log|sql|md|sh|bak)$|config\.php)">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>
+
+# Wymuś HTTPS (odkomentuj na produkcji z ważnym certyfikatem).
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>

@@ -1,0 +1,103 @@
+/* =====================================================================
+   Panel administracyjny — style. Dziedziczy zmienne z style.css.
+   ===================================================================== */
+
+.admin-body { background: var(--bg); }
+
+.admin-shell { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+
+/* ---------- Sidebar ---------- */
+.admin-sidebar {
+    background: #0a0a0c; border-right: 1px solid var(--border);
+    display: flex; flex-direction: column; padding: 20px 16px;
+    position: sticky; top: 0; height: 100vh;
+}
+.admin-brand { display: flex; align-items: center; gap: 12px; padding: 6px 8px 22px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
+.admin-brand small { color: var(--muted-2); font-size: .72rem; }
+.admin-nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+.admin-nav a { color: var(--text); padding: 12px 14px; border-radius: 10px; font-weight: 500; font-size: .95rem; transition: background-color .15s, color .15s; }
+.admin-nav a:hover { background: var(--surface-2); text-decoration: none; }
+.admin-nav a.is-active { background: rgba(250,204,21,.14); color: var(--accent); }
+.admin-sidebar-foot { padding-top: 16px; border-top: 1px solid var(--border); }
+.admin-sidebar-foot a { color: var(--muted); font-size: .85rem; }
+
+/* ---------- Główna część ---------- */
+.admin-main { display: flex; flex-direction: column; min-width: 0; }
+.admin-topbar {
+    display: flex; align-items: center; gap: 16px;
+    padding: 16px 26px; border-bottom: 1px solid var(--border);
+    background: rgba(13,13,15,.85); backdrop-filter: blur(10px);
+    position: sticky; top: 0; z-index: 20;
+}
+.admin-page-title { font-size: 1.25rem; margin: 0; flex: 1; }
+.admin-user { display: flex; align-items: center; gap: 14px; }
+.admin-user-name { color: var(--muted); font-size: .9rem; }
+.admin-burger { display: none; background: none; border: 1px solid var(--border); color: var(--text); border-radius: 8px; padding: 8px 12px; font-size: 1.1rem; cursor: pointer; }
+.admin-content { padding: 26px; flex: 1; }
+
+/* ---------- Statystyki ---------- */
+.stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 26px; }
+.stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; gap: 8px; }
+.stat-label { color: var(--muted); font-size: .85rem; }
+.stat-value { font-size: 2rem; font-weight: 800; color: var(--accent); font-family: var(--mono); }
+
+/* ---------- Panele ---------- */
+.admin-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; margin-bottom: 20px; }
+.panel h2 { font-size: 1.1rem; margin: 0 0 16px; }
+.panel h3 { font-size: .95rem; }
+.sep { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+
+/* ---------- Tabele ---------- */
+.table-scroll { overflow-x: auto; }
+.data-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.data-table th { text-align: left; padding: 10px 12px; color: var(--muted-2); font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; border-bottom: 1px solid var(--border); }
+.data-table td { padding: 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover { background: var(--surface-2); }
+
+.mini-list { list-style: none; margin: 0 0 14px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.mini-list a { color: var(--text); display: block; padding: 10px 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 9px; }
+.mini-list a:hover { border-color: var(--accent); text-decoration: none; }
+
+/* ---------- Filtry ---------- */
+.filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.chip { padding: 7px 14px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); font-size: .85rem; background: var(--surface); }
+.chip:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+.chip.is-active { background: var(--accent); color: #111; border-color: var(--accent); font-weight: 600; }
+
+/* ---------- Szczegóły ---------- */
+.back-link { display: inline-block; margin-bottom: 16px; color: var(--muted); }
+.detail-dl { display: grid; grid-template-columns: 150px 1fr; gap: 10px 16px; margin: 0 0 18px; }
+.detail-dl dt { color: var(--muted-2); font-size: .88rem; }
+.detail-dl dd { margin: 0; }
+.problem-text { background: var(--bg); border: 1px solid var(--border); border-radius: 9px; padding: 14px; color: var(--text); }
+.timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.timeline li { padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 9px; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
+.tl-note { width: 100%; color: var(--muted); font-size: .88rem; }
+
+/* ---------- Logowanie ---------- */
+.login-body { display: grid; place-items: center; min-height: 100vh; padding: 20px; }
+.login-wrap { width: 100%; max-width: 400px; }
+.login-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px 28px; box-shadow: var(--shadow); }
+.login-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+.login-brand small { color: var(--muted-2); font-size: .75rem; }
+
+/* ---------- Responsywność panelu ---------- */
+@media (max-width: 860px) {
+    .admin-shell { grid-template-columns: 1fr; }
+    .admin-sidebar {
+        position: fixed; left: 0; top: 0; bottom: 0; width: 250px; z-index: 60;
+        transform: translateX(-100%); transition: transform .25s ease; height: 100vh;
+    }
+    .admin-sidebar.is-open { transform: translateX(0); box-shadow: var(--shadow); }
+    .admin-burger { display: inline-block; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+    .admin-grid-2 { grid-template-columns: 1fr; }
+    .detail-dl { grid-template-columns: 120px 1fr; }
+}
+@media (max-width: 480px) {
+    .stat-grid { grid-template-columns: 1fr 1fr; }
+    .admin-content { padding: 18px; }
+    .admin-user-name { display: none; }
+}

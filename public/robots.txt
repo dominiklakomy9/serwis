@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Nie indeksuj panelu administratora ani endpointów API.
+Disallow: /admin/
+Disallow: /api/
+
+Sitemap: https://example.com/sitemap.xml

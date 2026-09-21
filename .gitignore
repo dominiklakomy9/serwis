@@ -1,0 +1,17 @@
+# Konfiguracja z realnymi danymi — nie commituj.
+/config/config.php
+
+# Logi i pliki tymczasowe.
+/storage/logs/*.log
+/storage/logs/*
+
+# Kopie zapasowe.
+*.sql.gz
+backup_*.sql
+
+# System / edytory.
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
