@@ -184,7 +184,7 @@ else:
                     <td class="nowrap"><?= e($r['phone']) ?></td>
                     <td><?= e(device_type_label($r['device_type'])) ?></td>
                     <td><span class="badge badge-<?= e($r['status']) ?>"><?= e(status_label($r['status'])) ?></span></td>
-                    <td><a href="<?= u('/admin/appointments.php') ?>?id=<?= (int) $r['id'] ?>" class="btn btn-ghost btn-sm" data-testid="view-appt-<?= (int) $r['id'] ?>">Szczegóły</a></td>
+                    <td><a href="<?= u('/admin/service.php') ?>?id=<?= (int) $r['id'] ?>" class="btn btn-ghost btn-sm" data-testid="view-appt-<?= (int) $r['id'] ?>">Panel serwisowy</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

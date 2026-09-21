@@ -60,6 +60,15 @@ Wszystkie pliki PHP: `php -l` bez błędów.
   + config `app.google_review_url`; gałąź `completed` w admin/appointments.php. Zweryfikowane
   (unit: URL w treści; integracja: zmiana statusu -> log wysyłki maila do klienta).
 
+- 2026-06: PANEL SERWISOWY. Rozszerzono `appointments` (device_serial, visual_condition, accessories,
+  technician_notes, received_at, released_at) + nowa tabela `repair_steps` (kroki naprawy z is_public).
+  admin/service.php: protokół przyjęcia, zmiana statusu + historia, kroki naprawy z przełącznikiem
+  widoczności. admin/protocol.php: wydruk protokołu przyjęcia i naprawy. status.php przebudowany:
+  dostęp klienta przez numer+e-mail lub magic link (token w URL z maila) — bez przepisywania tokenu;
+  klient widzi status, historię statusów, publiczne kroki naprawy i może sam anulować termin.
+  Migracja: database/migrations/2026_06_service_panel.sql. Zweryfikowane e2e (curl): publiczne kroki
+  widoczne, ukryte/notatki NIE wyciekają, magic link, e-mail lookup, anulowanie przez klienta.
+
 ## Backlog / przyszłość (P1/P2)
 - Pełny moduł protokołu przyjęcia (formularz, zdjęcia, wydruk PDF) na gotowej strukturze bazy.
 - Zmiana/anulowanie terminu przez klienta (self-service) zamiast kontaktu.

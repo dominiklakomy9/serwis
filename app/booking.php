@@ -345,3 +345,42 @@ function change_appointment_status(int $appointmentId, string $newStatus, ?int $
         return false;
     }
 }
+
+/**
+ * Wysyła powiadomienie e-mail po zmianie statusu (potwierdzenie / anulowanie /
+ * zakończenie). Nie przerywa procesu w razie błędu. Do maila dołączany jest
+ * magiczny link do śledzenia statusu (numer + token w adresie).
+ */
+function notify_status_change(int $appointmentId, string $newStatus): void
+{
+    try {
+        $pdo = db();
+        $q = $pdo->prepare(
+            'SELECT a.appointment_number, a.slot_date, a.slot_time, a.status_token, c.email, c.full_name
+             FROM appointments a JOIN customers c ON c.id = a.customer_id WHERE a.id = :id'
+        );
+        $q->execute([':id' => $appointmentId]);
+        $row = $q->fetch();
+        if (!$row || empty($row['email'])) {
+            return;
+        }
+        $payload = [
+            'number' => $row['appointment_number'],
+            'date'   => $row['slot_date'],
+            'time'   => substr((string) $row['slot_time'], 0, 5),
+            'token'  => $row['status_token'],
+        ];
+        if ($newStatus === 'confirmed') {
+            $t = mail_booking_confirmed($payload);
+        } elseif ($newStatus === 'cancelled') {
+            $t = mail_booking_cancelled($payload);
+        } elseif ($newStatus === 'completed') {
+            $t = mail_booking_completed($payload);
+        } else {
+            return;
+        }
+        Mailer::send($row['email'], $row['full_name'], $t['subject'], $t['html']);
+    } catch (Throwable $e) {
+        app_log('mail', 'notify_status_change: ' . $e->getMessage());
+    }
+}

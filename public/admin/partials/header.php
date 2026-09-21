@@ -33,7 +33,6 @@ $active = $adminActive ?? '';
             <a href="<?= u('/admin/index.php') ?>" class="<?= $active === 'dashboard' ? 'is-active' : '' ?>" data-testid="nav-dashboard">Pulpit</a>
             <a href="<?= u('/admin/appointments.php') ?>" class="<?= $active === 'appointments' ? 'is-active' : '' ?>" data-testid="nav-appointments">Zgłoszenia</a>
             <a href="<?= u('/admin/availability.php') ?>" class="<?= $active === 'availability' ? 'is-active' : '' ?>" data-testid="nav-availability">Dostępność</a>
-            <a href="<?= u('/admin/orders.php') ?>" class="<?= $active === 'orders' ? 'is-active' : '' ?>" data-testid="nav-orders">Protokoły</a>
         </nav>
         <div class="admin-sidebar-foot">
             <a href="<?= u('/index.php') ?>" target="_blank" rel="noopener">Zobacz stronę &#8599;</a>

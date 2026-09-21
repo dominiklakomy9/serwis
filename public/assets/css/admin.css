@@ -75,6 +75,11 @@
 .timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
 .timeline li { padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 9px; display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; }
 .tl-note { width: 100%; color: var(--muted); font-size: .88rem; }
+.step-line { display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; flex-wrap: wrap; }
+.step-actions { display: flex; gap: 8px; margin-top: 8px; width: 100%; }
+.service-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; margin-bottom: 8px; }
+.service-head h2 { margin: 8px 0 0; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.service-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 
 /* ---------- Logowanie ---------- */
 .login-body { display: grid; place-items: center; min-height: 100vh; padding: 20px; }

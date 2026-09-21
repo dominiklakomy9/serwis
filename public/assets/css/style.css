@@ -13,8 +13,8 @@
     --text:      #f3f4f6;
     --muted:     #9ca3af;
     --muted-2:   #6b7280;
-    --accent:    #facc15;
-    --accent-d:  #eab308;
+    --accent:    #155dfa;
+    --accent-d:  #3908ea;
     --danger:    #ef4444;
     --ok:        #22c55e;
     --radius:    14px;
@@ -263,6 +263,31 @@ a:hover { text-decoration: underline; }
     .about-side { position: static; }
     .about-cta { flex-direction: column; align-items: flex-start; }
     .about-cta .btn { width: 100%; }
+}
+
+/* ---------- Panel zlecenia klienta (status.php) ---------- */
+.order-panel { padding: 28px; }
+.order-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; border-bottom: 1px solid var(--border); padding-bottom: 18px; margin-bottom: 20px; }
+.order-number { font-size: 1.6rem; margin: 4px 0 0; }
+.order-badge { font-size: .9rem; padding: 6px 14px; }
+.order-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 0 0 24px; }
+.order-facts > div { padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.order-facts dt { color: var(--muted); font-size: .8rem; margin: 0 0 4px; }
+.order-facts dd { margin: 0; font-weight: 600; }
+.order-h2 { font-size: 1.1rem; margin: 24px 0 14px; }
+.order-timeline { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+.order-timeline li { display: flex; gap: 14px; padding: 0 0 18px; position: relative; }
+.order-timeline li:not(:last-child)::before { content: ""; position: absolute; left: 6px; top: 16px; bottom: 0; width: 2px; background: var(--border); }
+.order-timeline .ot-dot { width: 14px; height: 14px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 3px; box-shadow: 0 0 0 4px rgba(250,204,21,.14); z-index: 1; }
+.order-timeline.subtle .ot-dot { background: var(--muted-2); box-shadow: 0 0 0 4px rgba(107,114,128,.14); }
+.order-timeline .ot-text { margin: 0; font-weight: 600; }
+.order-cancel { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); }
+.order-cancel-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.order-back { margin-top: 22px; }
+
+@media (max-width: 520px) {
+    .order-facts { grid-template-columns: 1fr; }
+    .order-cancel-actions .btn { width: 100%; }
 }
 
 /* ---------- Footer ---------- */

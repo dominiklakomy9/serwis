@@ -203,6 +203,19 @@ function mail_layout(string $title, string $contentHtml): string
     </body></html>";
 }
 
+/**
+ * Przycisk z magicznym linkiem do śledzenia statusu (numer + token w URL).
+ * Klient nie musi nic przepisywać.
+ */
+function mail_track_button(array $b): string
+{
+    if (empty($b['number']) || empty($b['token'])) {
+        return '';
+    }
+    $url = e(base_url('/status.php?nr=' . urlencode((string) $b['number']) . '&token=' . urlencode((string) $b['token'])));
+    return "<p style=\"margin:20px 0;\"><a href=\"{$url}\" style=\"display:inline-block;background:#facc15;color:#111;padding:12px 22px;border-radius:8px;font-weight:700;text-decoration:none;\">Sprawdź status zlecenia</a></p>";
+}
+
 function mail_booking_received(array $booking): array
 {
     $num = e($booking['number']);
@@ -214,7 +227,8 @@ function mail_booking_received(array $booking): array
            <strong>Termin dostarczenia:</strong> {$date}, godz. {$time}</p>
         <p><strong>Status:</strong> Oczekuje na potwierdzenie</p>
         <p>Rezerwacja dotyczy wyłącznie terminu dostarczenia sprzętu, a nie czasu trwania naprawy.</p>
-        <p>Status swojego zgłoszenia sprawdzisz na stronie, podając numer zgłoszenia oraz otrzymany token.</p>
+        <p>Status zlecenia sprawdzisz w każdej chwili — kliknij poniższy przycisk albo podaj numer zlecenia i adres e-mail na stronie statusu.</p>
+    " . mail_track_button($booking) . "
     ");
     return ['subject' => "Otrzymaliśmy Twoje zgłoszenie {$booking['number']}", 'html' => $html];
 }
@@ -229,6 +243,7 @@ function mail_booking_confirmed(array $booking): array
         <p><strong>Numer zgłoszenia:</strong> {$num}<br>
            <strong>Termin:</strong> {$date}, godz. {$time}</p>
         <p>Prosimy o dostarczenie sprzętu w umówionym czasie.</p>
+    " . mail_track_button($booking) . "
     ");
     return ['subject' => "Termin dostarczenia potwierdzony — {$booking['number']}", 'html' => $html];
 }
@@ -262,6 +277,8 @@ function mail_booking_completed(array $booking): array
     $html = mail_layout('Zlecenie zakończone', "
         <p>Twoje zlecenie <strong>{$num}</strong> zostało zakończone, a sprzęt jest gotowy do odbioru.</p>
         {$reviewBlock}
+        <p>Podgląd wykonanych prac znajdziesz na stronie statusu zlecenia.</p>
+    " . mail_track_button($booking) . "
         <p>Dziękuję za zaufanie!</p>
     ");
     return ['subject' => "Zlecenie zakończone — {$booking['number']}", 'html' => $html];

@@ -134,6 +134,13 @@ CREATE TABLE IF NOT EXISTS `appointments` (
     `device_manufacturer`  VARCHAR(100)    NULL DEFAULT NULL,
     `device_model`         VARCHAR(100)    NULL DEFAULT NULL,
     `problem_description`  TEXT            NOT NULL,
+    -- Protokół przyjęcia (uzupełniane w panelu serwisowym)
+    `device_serial`        VARCHAR(120)    NULL DEFAULT NULL,
+    `visual_condition`     TEXT            NULL DEFAULT NULL,
+    `accessories`          TEXT            NULL DEFAULT NULL,
+    `technician_notes`     TEXT            NULL DEFAULT NULL,
+    `received_at`          DATETIME        NULL DEFAULT NULL,
+    `released_at`          DATETIME        NULL DEFAULT NULL,
     `status`               ENUM('pending','confirmed','in_progress','waiting_for_customer','completed','cancelled','no_show')
                                            NOT NULL DEFAULT 'pending',
     `status_token`         CHAR(64)        NOT NULL,
@@ -180,6 +187,23 @@ CREATE TABLE IF NOT EXISTS `appointment_status_history` (
     CONSTRAINT `fk_ash_admin`
         FOREIGN KEY (`changed_by`) REFERENCES `admins`(`id`)
         ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- ---------------------------------------------------------------------
+--  repair_steps — kroki naprawy (ścieżka naprawy widoczna dla klienta)
+--  is_public = 1 -> krok widoczny dla klienta na stronie statusu.
+-- ---------------------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `repair_steps` (
+    `id`             BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `appointment_id` BIGINT UNSIGNED NOT NULL,
+    `step_text`      VARCHAR(1000)   NOT NULL,
+    `is_public`      TINYINT(1)      NOT NULL DEFAULT 1,
+    `created_by`     BIGINT UNSIGNED NULL DEFAULT NULL,
+    `created_at`     DATETIME        NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (`id`),
+    KEY `idx_rs_appt` (`appointment_id`),
+    CONSTRAINT `fk_rs_appt`  FOREIGN KEY (`appointment_id`) REFERENCES `appointments`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `fk_rs_admin` FOREIGN KEY (`created_by`)     REFERENCES `admins`(`id`)       ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- ---------------------------------------------------------------------
