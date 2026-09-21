@@ -1,0 +1,9 @@
+# Blokada dostępu do warstwy aplikacji przez HTTP.
+# Ważne na hostingach współdzielonych, gdzie katalog app/ leży wewnątrz public_html.
+<IfModule mod_authz_core.c>
+    Require all denied
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Deny from all
+</IfModule>

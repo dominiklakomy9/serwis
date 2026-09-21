@@ -8,7 +8,12 @@
  * (te, których sprzęt jest w realizacji) oraz istniejące protokoły.
  */
 declare(strict_types=1);
-require __DIR__ . '/../../app/bootstrap.php';
+// Odszukanie warstwy aplikacji niezależnie od układu katalogów.
+$__bootstrap = null;
+foreach (['/app/bootstrap.php', '/../app/bootstrap.php', '/../../app/bootstrap.php'] as $__cand) {
+    if (@is_file(__DIR__ . $__cand)) { $__bootstrap = __DIR__ . $__cand; break; }
+}
+require $__bootstrap;
 admin_require_login();
 
 $pdo = db();

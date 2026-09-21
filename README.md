@@ -99,6 +99,30 @@ server {
 }
 ```
 
+### 3.4b. Hosting współdzielony z wymuszonym `public_html` (np. smallhost, cyber_Folks, home.pl)
+
+Wiele hostingów współdzielonych **wymusza katalog `public_html`** jako DocumentRoot i stosuje
+`open_basedir`, który **blokuje dostęp do plików poza `public_html`**. W takim przypadku umieść
+**całą zawartość projektu wewnątrz `public_html`** (układ spłaszczony):
+
+```
+public_html/
+    index.php, booking.php, status.php, ...   (zawartość katalogu public/)
+    api/ , admin/ , assets/ , partials/
+    app/        ← chroniony .htaccess
+    config/     ← chroniony .htaccess (utwórz tu config.php)
+    storage/    ← chroniony .htaccess (logi, katalog zapisywalny)
+    database/   ← chroniony .htaccess
+    bin/        ← chroniony .htaccess
+```
+
+Aplikacja **automatycznie odnajduje** warstwę `app/` w obu układach — oddzielny `public/`
+obok `app/`, albo wszystko w jednym `public_html`. Katalogi `app/`, `config/`, `storage/`,
+`database/`, `bin/` są zabezpieczone plikami `.htaccess` (blokada dostępu przez HTTP).
+
+W `config/config.php` ustaw `'base_path' => ''` (strona działa w katalogu głównym domeny).
+Upewnij się, że katalog `storage/logs` jest zapisywalny.
+
 ### 3.5. Konto administratora
 
 Schemat tworzy konto startowe:

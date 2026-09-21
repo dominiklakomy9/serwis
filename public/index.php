@@ -3,7 +3,13 @@
  * index.php — strona główna serwisu.
  */
 declare(strict_types=1);
-require __DIR__ . '/../app/bootstrap.php';
+// Odszukanie warstwy aplikacji niezależnie od układu katalogów
+// (public/ obok app/  LUB  wszystko w jednym katalogu, np. public_html na hostingu współdzielonym).
+$__bootstrap = null;
+foreach (['/app/bootstrap.php', '/../app/bootstrap.php', '/../../app/bootstrap.php'] as $__cand) {
+    if (@is_file(__DIR__ . $__cand)) { $__bootstrap = __DIR__ . $__cand; break; }
+}
+require $__bootstrap;
 
 $pageTitle = null; // sama nazwa serwisu
 $pageDescription = 'Dominik Łakomy — Pogotowie Komputerowe. Diagnostyka, konfiguracja, konserwacja i pomoc komputerowa. Umów termin dostarczenia sprzętu.';
