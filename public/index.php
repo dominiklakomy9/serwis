@@ -59,7 +59,7 @@ require __DIR__ . '/partials/header.php';
             <h1>Komputer nie działa tak,<br>jak powinien? <span class="accent">Sprawdźmy, co się dzieje.</span></h1>
             <p class="lead">Diagnostyka, konfiguracja, konserwacja i pomoc komputerowa — spokojnie i rzeczowo.</p>
             <div class="hero-actions">
-                <a href="/booking.php" class="btn btn-primary btn-lg" data-testid="hero-book-btn">Umów dostarczenie sprzętu</a>
+                <a href="<?= u('/booking.php') ?>" class="btn btn-primary btn-lg" data-testid="hero-book-btn">Umów dostarczenie sprzętu</a>
                 <a href="#uslugi" class="btn btn-ghost btn-lg">Zobacz usługi</a>
             </div>
             <p class="hero-hint"><span class="dot" aria-hidden="true"></span> Przyjęcie sprzętu po wcześniejszym umówieniu terminu</p>
@@ -176,7 +176,7 @@ require __DIR__ . '/partials/header.php';
         <div class="contact-actions">
             <a href="tel:<?= e(preg_replace('/\s+/', '', $phone)) ?>" class="btn btn-ghost">Zadzwoń</a>
             <a href="mailto:<?= e($email) ?>" class="btn btn-ghost">Napisz wiadomość</a>
-            <a href="/booking.php" class="btn btn-primary" data-testid="cta-book-btn">Umów termin</a>
+            <a href="<?= u('/booking.php') ?>" class="btn btn-primary" data-testid="cta-book-btn">Umów termin</a>
         </div>
         <p class="contact-meta">
             <?= e($phone) ?> &middot; <?= e($email) ?> &middot; <?= e($area) ?>

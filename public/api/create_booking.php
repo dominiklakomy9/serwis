@@ -121,7 +121,7 @@ json_response([
     'date'   => $result['date'],
     'time'   => $result['time'],
     'status' => $result['status'],
-    'redirect' => '/booking-success.php',
+    'redirect' => u('/booking-success.php'),
 ]);
 
 

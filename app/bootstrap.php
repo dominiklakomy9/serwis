@@ -46,6 +46,9 @@ function config(string $key, $default = null)
 // --- Strefa czasowa -------------------------------------------------
 date_default_timezone_set((string) config('app.timezone', 'Europe/Warsaw'));
 
+// Ścieżka bazowa aplikacji (obsługa instalacji w podkatalogu, np. /dlpogotowie/public).
+define('BASE', rtrim((string) config('app.base_path', ''), '/'));
+
 // --- Obsługa błędów -------------------------------------------------
 $isDev = config('app.env') === 'development';
 

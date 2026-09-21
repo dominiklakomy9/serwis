@@ -7,6 +7,7 @@
   'use strict';
 
   var CSRF = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  var BASE = document.body.getAttribute('data-base') || '';
   var MONTHS = ['Styczeń','Luty','Marzec','Kwiecień','Maj','Czerwiec','Lipiec','Sierpień','Wrzesień','Październik','Listopad','Grudzień'];
 
   var grid = document.getElementById('calGrid');
@@ -33,7 +34,7 @@
     var y = view.getFullYear(), m = view.getMonth() + 1;
     title.textContent = MONTHS[view.getMonth()] + ' ' + y;
     grid.setAttribute('aria-busy', 'true');
-    fetch('/api/slots.php?action=month&month=' + y + '-' + pad(m))
+    fetch(BASE + '/api/slots.php?action=month&month=' + y + '-' + pad(m))
       .then(function (r) { return r.json(); })
       .then(function (data) {
         availableDates = {};
@@ -98,7 +99,7 @@
 
   function loadSlots(date) {
     slotsBox.innerHTML = '<p class="muted">Ładowanie godzin…</p>';
-    fetch('/api/slots.php?date=' + encodeURIComponent(date))
+    fetch(BASE + '/api/slots.php?date=' + encodeURIComponent(date))
       .then(function (r) { return r.json(); })
       .then(function (data) {
         slotsBox.innerHTML = '';
@@ -190,7 +191,7 @@
     submitBtn.disabled = true;
     submitBtn.textContent = 'Wysyłanie…';
 
-    fetch('/api/create_booking.php', {
+    fetch(BASE + '/api/create_booking.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': CSRF },
       body: JSON.stringify(payload)
@@ -199,7 +200,7 @@
       .then(function (res) {
         var d = res.body;
         if (d.ok) {
-          window.location.href = d.redirect || '/booking-success.php';
+          window.location.href = d.redirect || (BASE + '/booking-success.php');
           return;
         }
         submitBtn.disabled = false;

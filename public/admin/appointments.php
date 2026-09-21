@@ -44,7 +44,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     }
     // PRG — przekierowanie po POST.
     $_SESSION['flash'] = $flash;
-    redirect('/admin/appointments.php?id=' . $apptId);
+    redirect(u('/admin/appointments.php') . '?id=' . $apptId);
 }
 
 if (!empty($_SESSION['flash'])) {
@@ -78,7 +78,7 @@ if ($detailId > 0):
         $history = $hist->fetchAll();
 ?>
     <?php if ($flash): ?><div class="form-alert show ok" data-testid="admin-flash"><?= e($flash) ?></div><?php endif; ?>
-    <a href="/admin/appointments.php" class="back-link">&#8592; Wróć do listy</a>
+    <a href="<?= u('/admin/appointments.php') ?>" class="back-link">&#8592; Wróć do listy</a>
 
     <div class="admin-grid-2">
         <section class="panel">
@@ -99,7 +99,7 @@ if ($detailId > 0):
 
         <section class="panel">
             <h2>Zmień status</h2>
-            <form method="post" action="/admin/appointments.php" data-testid="status-change-form">
+            <form method="post" action="<?= u('/admin/appointments.php') ?>" data-testid="status-change-form">
                 <?= csrf_field() ?>
                 <input type="hidden" name="appointment_id" value="<?= (int) $a['id'] ?>">
                 <div class="form-row">
@@ -151,9 +151,9 @@ else:
     <?php if ($flash): ?><div class="form-alert show ok"><?= e($flash) ?></div><?php endif; ?>
 
     <div class="filter-bar">
-        <a href="/admin/appointments.php" class="chip <?= $filter === '' ? 'is-active' : '' ?>">Wszystkie</a>
+        <a href="<?= u('/admin/appointments.php') ?>" class="chip <?= $filter === '' ? 'is-active' : '' ?>">Wszystkie</a>
         <?php foreach ($statuses as $s): ?>
-            <a href="/admin/appointments.php?status=<?= e($s) ?>" class="chip <?= $filter === $s ? 'is-active' : '' ?>"><?= e(status_label($s)) ?></a>
+            <a href="<?= u('/admin/appointments.php') ?>?status=<?= e($s) ?>" class="chip <?= $filter === $s ? 'is-active' : '' ?>"><?= e(status_label($s)) ?></a>
         <?php endforeach; ?>
     </div>
 
@@ -176,7 +176,7 @@ else:
                     <td class="nowrap"><?= e($r['phone']) ?></td>
                     <td><?= e(device_type_label($r['device_type'])) ?></td>
                     <td><span class="badge badge-<?= e($r['status']) ?>"><?= e(status_label($r['status'])) ?></span></td>
-                    <td><a href="/admin/appointments.php?id=<?= (int) $r['id'] ?>" class="btn btn-ghost btn-sm" data-testid="view-appt-<?= (int) $r['id'] ?>">Szczegóły</a></td>
+                    <td><a href="<?= u('/admin/appointments.php') ?>?id=<?= (int) $r['id'] ?>" class="btn btn-ghost btn-sm" data-testid="view-appt-<?= (int) $r['id'] ?>">Szczegóły</a></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

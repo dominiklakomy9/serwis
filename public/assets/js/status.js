@@ -5,6 +5,7 @@
   'use strict';
 
   var CSRF = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+  var BASE = document.body.getAttribute('data-base') || '';
   var form = document.getElementById('statusForm');
   var alertBox = document.getElementById('statusAlert');
   var result = document.getElementById('statusResult');
@@ -22,7 +23,7 @@
       token: form.token.value.trim()
     };
 
-    fetch('/api/status.php', {
+    fetch(BASE + '/api/status.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-CSRF-Token': CSRF },
       body: JSON.stringify(payload)

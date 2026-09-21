@@ -30,14 +30,14 @@ $active = $activeNav ?? '';
     <meta property="og:description" content="<?= e($desc) ?>">
     <meta property="og:url" content="<?= e($canonical) ?>">
 
-    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="icon" href="<?= u('/assets/images/favicon.svg') ?>" type="image/svg+xml">
+    <link rel="stylesheet" href="<?= u('/assets/css/style.css') ?>">
 </head>
-<body data-page="<?= e($active) ?>">
+<body data-base="<?= e(BASE) ?>" data-page="<?= e($active) ?>">
 <a class="skip-link" href="#main">Przejdź do treści</a>
 <header class="site-header">
     <div class="container header-inner">
-        <a class="brand" href="/index.php" aria-label="<?= e($service) ?> — strona główna">
+        <a class="brand" href="<?= u('/index.php') ?>" aria-label="<?= e($service) ?> — strona główna">
             <span class="brand-mark" aria-hidden="true">DŁ</span>
             <span class="brand-text">
                 <span class="brand-name"><?= e($owner) ?></span>
@@ -50,14 +50,14 @@ $active = $activeNav ?? '';
         </button>
 
         <nav class="main-nav" id="mainNav" aria-label="Menu główne">
-            <a href="/index.php#start" class="<?= $active === 'start' ? 'is-active' : '' ?>">Start</a>
-            <a href="/index.php#uslugi" class="<?= $active === 'uslugi' ? 'is-active' : '' ?>">Usługi</a>
-            <a href="/index.php#jak-to-dziala">Jak to działa</a>
-            <a href="/booking.php" class="<?= $active === 'booking' ? 'is-active' : '' ?>">Umów dostarczenie</a>
-            <a href="/index.php#faq">FAQ</a>
-            <a href="/index.php#kontakt">Kontakt</a>
-            <a href="/status.php" class="<?= $active === 'status' ? 'is-active' : '' ?>">Status zlecenia</a>
-            <a href="/booking.php" class="btn btn-primary nav-cta" data-testid="header-book-btn">Umów dostarczenie sprzętu</a>
+            <a href="<?= u('/index.php') ?>#start" class="<?= $active === 'start' ? 'is-active' : '' ?>">Start</a>
+            <a href="<?= u('/index.php') ?>#uslugi" class="<?= $active === 'uslugi' ? 'is-active' : '' ?>">Usługi</a>
+            <a href="<?= u('/index.php') ?>#jak-to-dziala">Jak to działa</a>
+            <a href="<?= u('/booking.php') ?>" class="<?= $active === 'booking' ? 'is-active' : '' ?>">Umów dostarczenie</a>
+            <a href="<?= u('/index.php') ?>#faq">FAQ</a>
+            <a href="<?= u('/index.php') ?>#kontakt">Kontakt</a>
+            <a href="<?= u('/status.php') ?>" class="<?= $active === 'status' ? 'is-active' : '' ?>">Status zlecenia</a>
+            <a href="<?= u('/booking.php') ?>" class="btn btn-primary nav-cta" data-testid="header-book-btn">Umów dostarczenie sprzętu</a>
         </nav>
     </div>
 </header>

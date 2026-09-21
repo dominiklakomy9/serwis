@@ -20,6 +20,9 @@ return [
         'tagline'       => 'Pogotowie Komputerowe',
         // Bazowy adres URL bez końcowego ukośnika, np. https://twojadomena.pl
         'base_url'      => 'https://example.com',
+        // Ścieżka bazowa, gdy aplikacja działa w podkatalogu (np. XAMPP: '/dlpogotowie/public').
+        // Dla VirtualHost / domeny w katalogu głównym pozostaw pusty ''.
+        'base_path'     => '',
         // Wymuś tryb HTTPS dla ciasteczek (Secure). Ustaw true na produkcji.
         'force_https'   => false,
         // Strefa czasowa

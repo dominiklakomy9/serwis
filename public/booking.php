@@ -111,7 +111,7 @@ require __DIR__ . '/partials/header.php';
                     <div class="form-row check-row">
                         <label class="checkbox">
                             <input type="checkbox" id="fPrivacy" name="privacy_accepted" value="1" required data-testid="input-privacy">
-                            <span>Zapoznałem/am się z <a href="/privacy.php" target="_blank" rel="noopener">Polityką prywatności</a>. <span class="req">*</span></span>
+                            <span>Zapoznałem/am się z <a href="<?= u('/privacy.php') ?>" target="_blank" rel="noopener">Polityką prywatności</a>. <span class="req">*</span></span>
                         </label>
                         <small class="field-error" data-for="privacy_accepted"></small>
                     </div>

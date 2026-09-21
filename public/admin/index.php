@@ -88,8 +88,7 @@ require __DIR__ . '/partials/header.php';
         <ul class="mini-list">
             <?php foreach ($newest as $n): ?>
             <li>
-                <a href="/admin/appointments.php?id=<?= (int) $n['id'] ?>">
-                    <span class="mono"><?= e($n['appointment_number']) ?></span>
+                    <a href="<?= u('/admin/appointments.php') ?>?id=<?= (int) $n['id'] ?>">                    <span class="mono"><?= e($n['appointment_number']) ?></span>
                     — <?= e($n['full_name']) ?>
                     <span class="muted small"><?= e($n['slot_date']) ?> <?= e(substr($n['slot_time'],0,5)) ?></span>
                 </a>
@@ -97,7 +96,7 @@ require __DIR__ . '/partials/header.php';
             <?php endforeach; ?>
         </ul>
         <?php endif; ?>
-        <a href="/admin/appointments.php" class="btn btn-ghost btn-sm">Wszystkie zgłoszenia</a>
+        <a href="<?= u('/admin/appointments.php') ?>" class="btn btn-ghost btn-sm">Wszystkie zgłoszenia</a>
     </section>
 </div>
 <?php require __DIR__ . '/partials/footer.php'; ?>

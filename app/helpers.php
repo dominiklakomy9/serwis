@@ -14,6 +14,17 @@ function e(?string $value): string
 }
 
 /**
+ * Buduje adres URL wewnętrzny z uwzględnieniem ścieżki bazowej (base_path).
+ * Dzięki temu aplikacja działa też w podkatalogu (np. /dlpogotowie/public).
+ */
+function u(string $path = '/'): string
+{
+    if ($path === '') { $path = '/'; }
+    if ($path[0] !== '/') { $path = '/' . $path; }
+    return (defined('BASE') ? BASE : '') . $path;
+}
+
+/**
  * Zwraca bazowy URL aplikacji bez końcowego ukośnika.
  */
 function base_url(string $path = ''): string

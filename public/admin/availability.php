@@ -74,7 +74,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
         $stmt->execute([':id' => $id]);
         $_SESSION['flash'] = 'Slot został odblokowany.';
     }
-    redirect('/admin/availability.php');
+    redirect(u('/admin/availability.php'));
 }
 
 $flash = $_SESSION['flash'] ?? null; unset($_SESSION['flash']);
@@ -105,7 +105,7 @@ require __DIR__ . '/partials/header.php';
     <section class="panel">
         <h2>Dodaj dostępność</h2>
         <p class="muted small">System automatycznie wygeneruje sloty co wybrany interwał (np. 09:00–13:00 co 30 min).</p>
-        <form method="post" action="/admin/availability.php" data-testid="add-availability-form">
+        <form method="post" action="<?= u('/admin/availability.php') ?>" data-testid="add-availability-form">
             <?= csrf_field() ?>
             <input type="hidden" name="action" value="add_block">
             <div class="form-row">
@@ -136,7 +136,7 @@ require __DIR__ . '/partials/header.php';
         <hr class="sep">
 
         <h2>Zablokuj pojedynczy slot</h2>
-        <form method="post" action="/admin/availability.php" data-testid="block-slot-form">
+        <form method="post" action="<?= u('/admin/availability.php') ?>" data-testid="block-slot-form">
             <?= csrf_field() ?>
             <input type="hidden" name="action" value="block_slot">
             <div class="form-grid-2">
@@ -171,7 +171,7 @@ require __DIR__ . '/partials/header.php';
                     <td><?= e(substr($b['start_time'],0,5)) ?>–<?= e(substr($b['end_time'],0,5)) ?></td>
                     <td><?= (int) $b['interval_minutes'] ?> min</td>
                     <td>
-                        <form method="post" action="/admin/availability.php" onsubmit="return confirm('Usunąć ten blok dostępności?');">
+                        <form method="post" action="<?= u('/admin/availability.php') ?>" onsubmit="return confirm('Usunąć ten blok dostępności?');">
                             <?= csrf_field() ?>
                             <input type="hidden" name="action" value="delete_block">
                             <input type="hidden" name="id" value="<?= (int) $b['id'] ?>">
@@ -197,7 +197,7 @@ require __DIR__ . '/partials/header.php';
                     <td><?= e(substr($bl['slot_time'],0,5)) ?></td>
                     <td><?= $bl['reason'] ? e($bl['reason']) : '<span class="muted">—</span>' ?></td>
                     <td>
-                        <form method="post" action="/admin/availability.php">
+                        <form method="post" action="<?= u('/admin/availability.php') ?>">
                             <?= csrf_field() ?>
                             <input type="hidden" name="action" value="unblock_slot">
                             <input type="hidden" name="id" value="<?= (int) $bl['id'] ?>">

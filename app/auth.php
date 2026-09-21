@@ -30,7 +30,7 @@ function admin_is_logged_in(): bool
 function admin_require_login(): void
 {
     if (!admin_is_logged_in()) {
-        redirect('/admin/login.php');
+        redirect(u('/admin/login.php'));
     }
 }
 

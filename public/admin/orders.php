@@ -53,8 +53,7 @@ require __DIR__ . '/partials/header.php';
                 <td class="nowrap"><?= e($c['slot_date']) ?></td>
                 <td><?= e($c['full_name']) ?></td>
                 <td><?= e(device_type_label($c['device_type'])) ?></td>
-                <td><a href="/admin/appointments.php?id=<?= (int) $c['id'] ?>" class="btn btn-ghost btn-sm">Otwórz zgłoszenie</a></td>
-            </tr>
+        <a href="<?= u('/admin/appointments.php') ?>?id=<?= (int) $c['id'] ?>" class="btn btn-ghost btn-sm">Otwórz zgłoszenie</a>            </tr>
         <?php endforeach; ?>
         </tbody>
     </table>

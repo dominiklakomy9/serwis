@@ -32,10 +32,10 @@ $year = date('Y');
         <div class="footer-col">
             <h3>Informacje</h3>
             <ul class="footer-list">
-                <li><a href="/booking.php">Umów dostarczenie sprzętu</a></li>
-                <li><a href="/status.php">Sprawdź status zlecenia</a></li>
-                <li><a href="/privacy.php">Polityka prywatności</a></li>
-                <li><a href="/terms.php">Regulamin</a></li>
+                <li><a href="<?= u('/booking.php') ?>">Umów dostarczenie sprzętu</a></li>
+                <li><a href="<?= u('/status.php') ?>">Sprawdź status zlecenia</a></li>
+                <li><a href="<?= u('/privacy.php') ?>">Polityka prywatności</a></li>
+                <li><a href="<?= u('/terms.php') ?>">Regulamin</a></li>
             </ul>
         </div>
     </div>
@@ -43,9 +43,9 @@ $year = date('Y');
         <p>&copy; <?= e($year) ?> <?= e($service) ?>. Wszelkie prawa zastrzeżone.</p>
     </div>
 </footer>
-<script src="/assets/js/main.js"></script>
+<script src="<?= u('/assets/js/main.js') ?>"></script>
 <?php if (!empty($pageScripts)) foreach ($pageScripts as $s): ?>
-<script src="<?= e($s) ?>"></script>
+<script src="<?= e(u($s)) ?>"></script>
 <?php endforeach; ?>
 </body>
 </html>

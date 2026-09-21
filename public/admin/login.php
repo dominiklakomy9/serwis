@@ -10,7 +10,7 @@ declare(strict_types=1);
 require __DIR__ . '/../../app/bootstrap.php';
 
 if (admin_is_logged_in()) {
-    redirect('/admin/index.php');
+    redirect(u('/admin/index.php'));
 }
 
 $error = null;
@@ -26,7 +26,7 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
         $email = (string) ($_POST['email'] ?? '');
         $password = (string) ($_POST['password'] ?? '');
         if (admin_attempt_login($email, $password)) {
-            redirect('/admin/index.php');
+            redirect(u('/admin/index.php'));
         }
         $error = 'Nieprawidłowy login lub hasło.';
     }
@@ -39,13 +39,13 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <title>Logowanie — Panel administracyjny</title>
-    <link rel="icon" href="/assets/images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/assets/css/admin.css">
+    <link rel="icon" href="<?= u('/assets/images/favicon.svg') ?>" type="image/svg+xml">
+    <link rel="stylesheet" href="<?= u('/assets/css/style.css') ?>">
+    <link rel="stylesheet" href="<?= u('/assets/css/admin.css') ?>">
 </head>
 <body class="admin-body login-body">
     <main class="login-wrap">
-        <form class="login-card" method="post" action="/admin/login.php" data-testid="admin-login-form">
+        <form class="login-card" method="post" action="<?= u('/admin/login.php') ?>" data-testid="admin-login-form">
             <div class="login-brand">
                 <span class="brand-mark" aria-hidden="true">DŁ</span>
                 <div>

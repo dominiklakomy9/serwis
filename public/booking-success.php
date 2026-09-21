@@ -21,7 +21,7 @@ require __DIR__ . '/partials/header.php';
             <div class="card center">
                 <h1>Brak danych zgłoszenia</h1>
                 <p>Nie znaleziono informacji o zgłoszeniu. Mogło już zostać wyświetlone lub sesja wygasła.</p>
-                <a href="/booking.php" class="btn btn-primary">Umów dostarczenie sprzętu</a>
+                <a href="<?= u('/booking.php') ?>" class="btn btn-primary">Umów dostarczenie sprzętu</a>
             </div>
         <?php else: ?>
             <div class="card success-card" data-testid="booking-success">
@@ -51,8 +51,8 @@ require __DIR__ . '/partials/header.php';
                 </div>
 
                 <div class="success-actions">
-                    <a href="/status.php?number=<?= e(urlencode($booking['number'])) ?>" class="btn btn-primary" data-testid="go-status">Sprawdź status zlecenia</a>
-                    <a href="/index.php" class="btn btn-ghost">Wróć na stronę główną</a>
+                    <a href="<?= u('/status.php') ?>?number=<?= e(urlencode($booking['number'])) ?>" class="btn btn-primary" data-testid="go-status">Sprawdź status zlecenia</a>
+                    <a href="<?= u('/index.php') ?>" class="btn btn-ghost">Wróć na stronę główną</a>
                 </div>
             </div>
         <?php endif; ?>
