@@ -54,6 +54,11 @@ Wszystkie pliki PHP: `php -l` bez błędów.
   (smallhost.pl). Pliki wejściowe używają lokatora ścieżki `app/bootstrap.php` (./app, ../app,
   ../../app) → działa w układzie spłaszczonym (wszystko w public_html) i klasycznym (public/ obok app/).
   Dodano `.htaccess` (deny) do app/, bin/, database/. Zweryfikowane testing_agent (100%, iteration_2.json).
+- 2026-06: Strona główna — dodano sekcję „O mnie" (id=o-mnie) + link w nawigacji; profil serwisanta,
+  podejście (diagnoza-first), stack technologiczny (chipy), działalność nierejestrowana. Styl spójny.
+- 2026-06: E-mail z prośbą o opinię Google po zakończeniu zlecenia. Nowy szablon `mail_booking_completed`
+  + config `app.google_review_url`; gałąź `completed` w admin/appointments.php. Zweryfikowane
+  (unit: URL w treści; integracja: zmiana statusu -> log wysyłki maila do klienta).
 
 ## Backlog / przyszłość (P1/P2)
 - Pełny moduł protokołu przyjęcia (formularz, zdjęcia, wydruk PDF) na gotowej strukturze bazy.

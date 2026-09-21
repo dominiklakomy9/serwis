@@ -31,6 +31,9 @@ return [
         'env'           => 'production',
         // Prefiks numeru zgłoszenia -> np. PK-2026-0001
         'order_prefix'  => 'PK',
+        // Link do wystawienia opinii w Google (wysyłany w e-mailu po zakończeniu zlecenia).
+        // Pozostaw pusty '', aby nie dołączać prośby o opinię.
+        'google_review_url' => '',
     ],
 
     // --- Dane kontaktowe (placeholdery — uzupełnij własne) ---

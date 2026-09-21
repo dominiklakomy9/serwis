@@ -52,6 +52,7 @@ $active = $activeNav ?? '';
         <nav class="main-nav" id="mainNav" aria-label="Menu główne">
             <a href="<?= u('/index.php') ?>#start" class="<?= $active === 'start' ? 'is-active' : '' ?>">Start</a>
             <a href="<?= u('/index.php') ?>#uslugi" class="<?= $active === 'uslugi' ? 'is-active' : '' ?>">Usługi</a>
+            <a href="<?= u('/index.php') ?>#o-mnie">O mnie</a>
             <a href="<?= u('/index.php') ?>#jak-to-dziala">Jak to działa</a>
             <a href="<?= u('/booking.php') ?>" class="<?= $active === 'booking' ? 'is-active' : '' ?>">Umów dostarczenie</a>
             <a href="<?= u('/index.php') ?>#faq">FAQ</a>

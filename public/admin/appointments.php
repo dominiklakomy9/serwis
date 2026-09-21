@@ -38,6 +38,9 @@ if (($_SERVER['REQUEST_METHOD'] ?? '') === 'POST') {
                 } elseif ($newStatus === 'cancelled') {
                     $t = mail_booking_cancelled($payload);
                     Mailer::send($row['email'], $row['full_name'], $t['subject'], $t['html']);
+                } elseif ($newStatus === 'completed') {
+                    $t = mail_booking_completed($payload);
+                    Mailer::send($row['email'], $row['full_name'], $t['subject'], $t['html']);
                 }
             }
         } catch (Throwable $e) {

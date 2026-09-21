@@ -81,6 +81,78 @@ require __DIR__ . '/partials/header.php';
     </div>
 </section>
 
+<!-- O MNIE -->
+<section class="section section-alt" id="o-mnie">
+    <div class="container">
+        <header class="section-head">
+            <p class="eyebrow">O mnie</p>
+            <h2>Informatyka bez zbędnego komplikowania</h2>
+        </header>
+
+        <div class="about-grid">
+            <div class="about-text">
+                <p class="about-lead">Cześć, nazywam się <strong>Dominik Łakomy</strong>. Komputerami zajmuję się z zamiłowania i z wykształcenia — jestem technikiem informatykiem, a obecnie studiuję Informatykę na studiach inżynierskich (1. rok).</p>
+                <p>Sprzęt i oprogramowanie to dla mnie nie tylko teoria. Najwięcej uczę się przy prawdziwych problemach — tych, z którymi ludzie przychodzą do mnie na co dzień. Prowadzę lokalny serwis „Dominik Łakomy – Pogotowie Komputerowe", w którym pomagam osobom prywatnym oraz małym firmom.</p>
+                <p>To niewielka, jednoosobowa działalność. Dzięki temu każdym zgłoszeniem zajmuję się osobiście i mam czas, żeby naprawdę zrozumieć, co się dzieje z Twoim sprzętem.</p>
+
+                <div class="about-block">
+                    <h3>Najpierw diagnoza, potem rozwiązanie</h3>
+                    <p>Nie zgaduję. Zanim cokolwiek naprawię czy skonfiguruję, ustalam rzeczywistą przyczynę problemu. Jeśli jest kilka dróg, przedstawiam opcje i mówię wprost, z jakimi kosztami się wiążą. Nie każda awaria oznacza nowy sprzęt — czasem wystarczy dobra konfiguracja, wymiana jednej części albo usunięcie usterki programowej.</p>
+                    <p class="about-flow"><span>Co było nie tak</span><i aria-hidden="true">→</i><span>co zrobiłem</span><i aria-hidden="true">→</i><span>jaki jest efekt</span></p>
+                </div>
+
+                <div class="about-block">
+                    <h3>Tłumaczę zrozumiale</h3>
+                    <p>Komputer, drukarka czy domowa sieć mają przede wszystkim działać. Dlatego mówię do Ciebie normalnym językiem — bez zasypywania niepotrzebnymi określeniami technicznymi. Do każdego zgłoszenia podchodzę indywidualnie, niezależnie od tego, czy to niedziałający laptop, problem z drukarką, czy konfiguracja urządzenia.</p>
+                </div>
+            </div>
+
+            <aside class="about-side">
+                <div class="facts-card">
+                    <h3 class="facts-title">W skrócie</h3>
+                    <ul class="facts-list">
+                        <li><span class="fact-dot" aria-hidden="true"></span>Technik informatyk</li>
+                        <li><span class="fact-dot" aria-hidden="true"></span>Student inż. Informatyki (1. rok)</li>
+                        <li><span class="fact-dot" aria-hidden="true"></span>Usługi wykonuję osobiście</li>
+                        <li><span class="fact-dot" aria-hidden="true"></span>Działalność nierejestrowana</li>
+                    </ul>
+
+                    <h3 class="facts-title mt">Na co dzień pracuję z</h3>
+                    <div class="tech-chips">
+                        <span class="tech-chip">PHP</span>
+                        <span class="tech-chip">JavaScript</span>
+                        <span class="tech-chip">HTML</span>
+                        <span class="tech-chip">CSS</span>
+                        <span class="tech-chip">MySQL</span>
+                        <span class="tech-chip">SQL</span>
+                        <span class="tech-chip">Python</span>
+                    </div>
+
+                    <h3 class="facts-title mt">Interesuje mnie</h3>
+                    <div class="tech-chips subtle">
+                        <span class="tech-chip">Administracja systemami</span>
+                        <span class="tech-chip">Bezpieczeństwo IT</span>
+                        <span class="tech-chip">Bazy danych</span>
+                        <span class="tech-chip">Sieci</span>
+                        <span class="tech-chip">Automatyzacja</span>
+                        <span class="tech-chip">Strony i aplikacje</span>
+                    </div>
+                </div>
+
+                <p class="about-note">„Dominik Łakomy – Pogotowie Komputerowe" działa w formie działalności nierejestrowanej, zgodnie z obowiązującymi przepisami.</p>
+            </aside>
+        </div>
+
+        <div class="about-cta">
+            <div>
+                <h3>Masz problem z komputerem?</h3>
+                <p>Nie musisz wiedzieć, co się zepsuło — od tego jest diagnostyka. Opisz, co się dzieje, a wspólnie znajdziemy rozwiązanie.</p>
+            </div>
+            <a href="<?= u('/booking.php') ?>" class="btn btn-primary btn-lg" data-testid="about-book-btn">Umów dostarczenie sprzętu</a>
+        </div>
+    </div>
+</section>
+
 <!-- USŁUGI -->
 <section class="section" id="uslugi">
     <div class="container">

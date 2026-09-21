@@ -242,3 +242,27 @@ function mail_booking_cancelled(array $booking): array
     ");
     return ['subject' => "Termin anulowany — {$booking['number']}", 'html' => $html];
 }
+
+function mail_booking_completed(array $booking): array
+{
+    $num = e($booking['number']);
+    $review = trim((string) config('app.google_review_url', ''));
+
+    $reviewBlock = '';
+    if ($review !== '') {
+        $r = e($review);
+        $reviewBlock = "
+        <p>Jeśli jesteś zadowolony/a z usługi, będę wdzięczny za krótką opinię w Google — zajmuje to chwilę, a bardzo mi pomaga.</p>
+        <p style=\"margin:22px 0;\">
+            <a href=\"{$r}\" style=\"display:inline-block;background:#facc15;color:#111;padding:13px 24px;border-radius:8px;font-weight:700;text-decoration:none;\">Wystaw opinię w Google</a>
+        </p>
+        <p style=\"font-size:13px;color:#9ca3af;\">Jeśli przycisk nie działa, skopiuj i wklej ten link w przeglądarce:<br>{$r}</p>";
+    }
+
+    $html = mail_layout('Zlecenie zakończone', "
+        <p>Twoje zlecenie <strong>{$num}</strong> zostało zakończone, a sprzęt jest gotowy do odbioru.</p>
+        {$reviewBlock}
+        <p>Dziękuję za zaufanie!</p>
+    ");
+    return ['subject' => "Zlecenie zakończone — {$booking['number']}", 'html' => $html];
+}
